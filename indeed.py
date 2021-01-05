@@ -30,7 +30,8 @@ def extract_job(h):
 def extract_indeed_jobs(last_page):
   jobs = []
   for page in range(last_page) :
-    result = requests.get(f"{URL}&start={0*LIMIT}")
+    print(f"Scrapping page {page}")
+    result = requests.get(f"{URL}&start={page*LIMIT}")
     soup = BeautifulSoup(result.text,"html.parser")
     results=soup.find_all("div",{"data-tn-component": "organicJob"})
     for result in results:
